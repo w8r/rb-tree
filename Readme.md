@@ -3,7 +3,7 @@
 [RB-tree](https://en.wikipedia.org/wiki/Red-black_tree): **[fast](#benchmarks)**(non-recursive) and **simple**(< 500 lines of code)
 Implementation is adapted directly from Wikipedia with the same API as [w8r/avl](https://github.com/w8r/avl), to run the benchmarks agains other trees.
 
-![RB-tree](https://i.stack.imgur.com/CNSAZ.png)
+![RB-tree](https://upload.wikimedia.org/wikipedia/commons/6/66/Red-black_tree_example.svg)
 
 | Operation     | Average       | Worst case             |
 | ------------- | ------------- | ---------------------- |
