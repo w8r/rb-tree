@@ -1,61 +1,48 @@
 {
-  "name": "rb-tree",
-  "version": "0.1.4",
-  "author": "Alexander Milevski <info@w8r.name>",
-  "license": "MIT",
-  "description": "Fast Red-Black tree for Node and browser",
+  "name": "rbtree",
+  "version": "0.1.0",
+  "description": "Red-Black Tree",
   "main": "dist/rbtree.js",
-  "jsnext:main": "index",
-  "module": "index",
-  "types": "index.d.ts",
-  "files": [
-    "dist",
-    "index.js",
-    "index.d.ts"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/w8r/rb-tree.git"
+  "directories": {
+    "test": "test"
   },
   "scripts": {
-    "prebuild": "npm run lint",
-    "lint": "eslint src",
-    "build": "rollup -c build/rollup.config.umd.js && rollup -c build/rollup.config.es6.js && npm run types",
-    "types": "tsc index.d.ts tests/types.ts",
-    "pretest": "rollup -c build/rollup.config.tests.js",
-    "prebenchmark": "npm run build",
-    "benchmark": "node bench/benchmark.js",
-    "start": "npm run test:watch",
-    "test:watch": "nodemon --watch src --watch tests --exec 'npm test'",
-    "test": "mocha build/tests-bundle.js && npm run types",
-    "prepublish": "npm run build && npm test"
+    "test": "npm run build && mocha -r ts-node/register test/**/*.test.ts",
+    "build": "rollup -c",
+    "start": "nodemon --exec 'npm t' --watch src --watch test --ext js,ts"
   },
-  "devDependencies": {
-    "avl": "^1.4.0",
-    "benchmark": "^2.1.4",
-    "bintrees": "^1.0.1",
-    "chai": "^4.1.0",
-    "eslint": "^4.2.0",
-    "eslint-config-airbnb-base": "^11.2.0",
-    "eslint-plugin-import": "^2.7.0",
-    "functional-red-black-tree": "^1.0.1",
-    "google-closure-library": "^20170626.0.0",
-    "mocha": "^5.1.1",
-    "nodemon": "^1.11.0",
-    "rollup": "^0.58.2",
-    "rollup-plugin-buble": "^0.19.2",
-    "rollup-plugin-multi-entry": "^2.0.2",
-    "rollup-watch": "^4.3.1",
-    "source-map-support": "^0.5.5",
-    "tern": "^0.21.0",
-    "typescript": "^2.4.2"
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/w8r/rb-tree.git"
   },
   "keywords": [
-    "binary-tree",
-    "bst",
-    "splay-tree",
-    "splay",
-    "balanced-search-tree"
+    "red-black tree",
+    "rb-tree",
+    "binary",
+    "balanced binary tree",
+    "tree",
+    "geometry",
+    "algorithm"
   ],
-  "dependencies": {}
+  "author": "Alexander Milevski",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/w8r/rb-tree/issues"
+  },
+  "homepage": "https://github.com/w8r/rb-tree#readme",
+  "devDependencies": {
+    "@types/chai": "^4.1.4",
+    "@types/mocha": "^5.2.2",
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.17.5",
+    "reify": "^0.16.2",
+    "rollup": "^0.60.7",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-typescript": "^0.8.1",
+    "rollup-plugin-virtual": "^1.0.1",
+    "ts-node": "^6.1.1",
+    "tslib": "^1.9.2",
+    "typescript": "^2.9.2"
+  }
 }

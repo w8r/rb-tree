@@ -24,7 +24,7 @@ describe('remove', () => {
     tree.insert(1);
     tree.insert(2);
     tree.remove(1);
-    assert.equal(tree._root.key, 2);
+    assert.equal(tree.root.key, 2);
   });
 
   it('should take the left child if the right does not exist', () => {
@@ -32,7 +32,7 @@ describe('remove', () => {
     tree.insert(2);
     tree.insert(1);
     tree.remove(2);
-    assert.equal(tree._root.key, 1);
+    assert.equal(tree.root.key, 1);
   });
 
 

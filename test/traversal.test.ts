@@ -1,7 +1,7 @@
 import { describe, it } from 'mocha';
 import { assert }       from 'chai';
 
-import Tree from '../index';
+import Tree, { Node } from '../index';
 
 describe('traversal check', () => {
 
@@ -12,7 +12,8 @@ describe('traversal check', () => {
     tree.insert(0);
     tree.insert(2);
 
-    tree.forEach((n, i) => assert.equal(n.key, i));
+    let i = 0;
+    tree.forEach((n:Node<number,any>) => assert.equal(n.key, i++));
   });
 
   it('should find predecessor for the node', () => {
@@ -79,16 +80,15 @@ describe('traversal check', () => {
 
     assert.isNull(tree.at(10));
     assert.isNull(tree.at(-1));
-    assert.isNull(tree.at('a'));
   });
 
 
   it ('should support range walking', () => {
-    const tree = new Tree();
+    const tree = new Tree<Number, any>();
     for (let i = 0; i < 10; i++) tree.insert(i);
 
-    const arr = [];
-    tree.range(3, 8, (n) => {
+    const arr:Array<number> = [];
+    tree.range(3, 8, (n:Node<number, any>) => {
       arr.push(n.key);
     });
     assert.deepEqual(arr, [3,4,5,6,7,8]);
@@ -98,8 +98,8 @@ describe('traversal check', () => {
     const tree = new Tree();
     for (let i = 0; i < 10; i++) tree.insert(i);
 
-    const arr = [];
-    tree.range(-3,5, (n) => {
+    const arr:Array<number> = [];
+    tree.range(-3,5, (n:Node<number, any>) => {
       arr.push(n.key);
     });
 
@@ -110,8 +110,8 @@ describe('traversal check', () => {
     const tree = new Tree();
     for (let i = 0; i < 10; i++) tree.insert(i);
 
-    const arr = [];
-    tree.range(3,15, (n) => {
+    const arr:Array<number> = [];
+    tree.range(3,15, (n:Node<number, any>) => {
       arr.push(n.key);
     });
 
@@ -122,14 +122,14 @@ describe('traversal check', () => {
     const tree = new Tree();
     for (let i = 0; i < 10; i++) tree.insert(i);
 
-    const arr = [];
-    tree.range(10, 20, (n) => {
+    const arr:Array<number> = [];
+    tree.range(10, 20, (n:Node<number, any>) => {
       arr.push(n.key);
     });
 
     assert.equal(arr.length, 0);
 
-    tree.range(-10, 20, (n) => {
+    tree.range(-10, 20, (n:Node<number, any>) => {
       arr.push(n.key);
     });
     assert.deepEqual(arr, tree.keys());
