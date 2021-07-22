@@ -34,8 +34,7 @@ describe('remove', () => {
     tree.remove(2);
     assert.equal(tree.root.key, 1);
   });
-
-
+  
   it.skip('should not break the existing pointers to nodes', () => {
     const tree = new Tree();
 
@@ -48,5 +47,13 @@ describe('remove', () => {
     assert.equal(n2.key, 2);
     assert.equal(n3.key, 3);
   });
-
+  
+  it('should delete all inserted nodes without errors', () => {
+    const tree = new Tree();
+    for(let i=0; i<10; i++)
+      t.insert(i, i)
+    for(let i=0; i<10; i++)
+      t.remove(i)
+    assert.equal(tree.size, 0);
+  });
 });
